@@ -5,7 +5,7 @@ from telegram import Bot
 TOKEN = "8819201392:AAHJxmFT4ybbqIXsxDym8IZQ9Q7iwBg7_yo"
 CHAT_ID = -5423366197
 
-MESSAGE = """🔔 NHẮC NHỞ @all
+MESSAGE = """🔔 NHẮC NHỞ @ivyy_mb
 
 CHECK LINK MỌI NGƯỜI ƠI"""
 
