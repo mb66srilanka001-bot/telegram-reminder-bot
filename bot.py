@@ -1,24 +1,23 @@
-import os
 import asyncio
+import os
 from telegram import Bot
 
-TOKEN = os.getenv("BOT_TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+TOKEN = "8819201392:AAHJxmFT4ybbqIXsxDym8IZQ9Q7iwBg7_yo"
+CHAT_ID = -5234645026
 
-MESSAGE = """🔔 NHẮC NHỞ
+MESSAGE = """🔔 NHẮC NHỞ @all
 
-Mọi người chú ý kiểm tra công việc nhé!"""
+CHECK LINK MỌI NGƯỜI ƠI"""
+
 
 async def main():
     bot = Bot(token=TOKEN)
+    # Khởi tạo session cho bot
+    async with bot:
+        while True:
+            await bot.send_message(chat_id=CHAT_ID, text=MESSAGE)
+            await asyncio.sleep(3600)  # Chờ 1 tiếng (3600 giây)
 
-    while True:
-        await bot.send_message(
-            chat_id=CHAT_ID,
-            text=MESSAGE
-        )
-
-        await asyncio.sleep(3600)
 
 if __name__ == "__main__":
     asyncio.run(main())
