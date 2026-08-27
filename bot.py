@@ -22,7 +22,7 @@ async def main():
         while True:
             now = datetime.now(tz)
             next_hour = (now + timedelta(hours=1)).replace(
-                minute=0, second=0, microsecond=0
+                minute=30, second=0, microsecond=0
             )
             wait_seconds = (next_hour - now).total_seconds()
 
