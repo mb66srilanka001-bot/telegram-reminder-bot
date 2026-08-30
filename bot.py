@@ -1,35 +1,45 @@
 import asyncio
-from datetime import datetime, timedelta
+from datetime import datetime
 import zoneinfo
 from telegram import Bot
 
 TOKEN = "8819201392:AAHJxmFT4ybbqIXsxDym8IZQ9Q7iwBg7_yo"
 CHAT_ID = -5423366197
 
-MESSAGE = """🔔 NHẮC NHỞ @ivyy_mb @Postmb66 @Emiemoi @yumim_b6 @jayramb66 @lussiambb @eira_day_ne @cloo_ii
-
-CHECK LINK MỌI NGƯỜI ƠI"""
-
+# Định nghĩa nội dung thông báo cho từng khung giờ
+SCHEDULE = {
+    # Nhóm 1: 09:30, 11:30, 14:30
+    ("09:30", "11:30", "14:30"): "check link đi mấy ní @ivyy_mb @jayramb66 @lussiambb",
+    
+    # Nhóm 2: 16:30, 20:30, 21:30, 23:30
+    ("16:30", "20:30", "21:30", "23:30"): "check link đi mấy ní @Emiemoi @DL_MB66 @yumim_b6",
+    
+    # Nhóm 3: 00:30, 03:30, 06:30
+    ("00:30", "03:30", "06:30"): "check link đi mấy ní @cloo_ii",
+    
+    # Nhóm 4: 02:30, 05:30
+    ("02:30", "05:30"): "check link đi mấy ní @eira_day_ne"
+}
 
 async def main():
     bot = Bot(token=TOKEN)
-    tz = zoneinfo.ZoneInfo("Asia/Ho_Chi_Minh")
+    tz = zoneinfo.ZoneInfo("Asia/Ho_Chi_Minh")  # Cố định giờ Việt Nam (GMT+7)
 
     async with bot:
-        # Gửi ngay 1 tin test ban đầu
-        await bot.send_message(chat_id=CHAT_ID, text=MESSAGE)
-
         while True:
             now = datetime.now(tz)
-            # Xác định mốc phút 30 tiếp theo chuẩn xác
-            target = now.replace(minute=30, second=0, microsecond=0)
-            if now >= target:
-                target += timedelta(hours=1)
+            current_time = now.strftime("%H:%M")
 
-            wait_seconds = (target - now).total_seconds()
-            await asyncio.sleep(wait_seconds)
-            await bot.send_message(chat_id=CHAT_ID, text=MESSAGE)
-
+            # Kiểm tra xem giờ hiện tại có trùng với khung giờ hẹn không
+            for times, message in SCHEDULE.items():
+                if current_time in times:
+                    await bot.send_message(chat_id=CHAT_ID, text=message)
+                    # Sau khi gửi xong, chờ 60s để tránh gửi trùng lặp trong cùng 1 phút
+                    await asyncio.sleep(60)
+                    break
+            
+            # Vòng lặp kiểm tra lại sau mỗi 10 giây
+            await asyncio.sleep(10)
 
 if __name__ == "__main__":
     asyncio.run(main())
