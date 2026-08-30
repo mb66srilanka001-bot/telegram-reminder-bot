@@ -9,16 +9,16 @@ CHAT_ID = -5423366197
 # Định nghĩa nội dung thông báo cho từng khung giờ
 SCHEDULE = {
     # Nhóm 1: 09:30, 11:30, 14:30
-    ("09:30", "11:30", "14:30"): "check link đi mấy ní @ivyy_mb @jayramb66 @lussiambb",
+    ("09:15", "11:15", "14:15"): "check link đi mấy ní @ivyy_mb @jayramb66 @lussiambb",
     
     # Nhóm 2: 16:30, 20:30, 21:30, 23:30
-    ("16:30", "20:30", "21:30", "23:30"): "check link đi mấy ní @Emiemoi @DL_MB66 @yumim_b6",
+    ("16:15", "20:15", "21:15", "23:15"): "check link đi mấy ní @Emiemoi @DL_MB66 @yumim_b6",
     
     # Nhóm 3: 00:30, 03:30, 06:30
-    ("00:30", "03:30", "06:30"): "check link đi mấy ní @cloo_ii",
+    ("00:15", "03:15", "06:15"): "check link đi mấy ní @cloo_ii",
     
     # Nhóm 4: 02:30, 05:30
-    ("02:30", "05:30"): "check link đi mấy ní @eira_day_ne"
+    ("02:15", "05:15"): "check link đi mấy ní @eira_day_ne"
 }
 
 async def main():
