@@ -19,6 +19,10 @@ SCHEDULE = {
     
     # Nhóm 4: 02:30, 05:30
     ("02:15", "05:15"): "check link đi mấy ní @eira_day_ne"
+    
+    # Nhóm 5: 01:30, 04:30
+    ("01:15", "04:15"): "check link đi mấy ní @cskh_chiko"
+    
 }
 
 async def main():
